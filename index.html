@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <link rel="stylesheet" href="leaflet-search/leaflet-search.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">SIGLEAF</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal"><span class="fa fa-question-circle"></span>&nbsp;About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!--
+    <section class="sec1">
+        <div class="text-center mt-4 pt-5 centered" id="section1">
+            <div id="findbox"></div>
+            <h1>Sistem Informasi Geografis</h1>
+            <p class="lead">SI berikut dapat menampilkan Cafe atau Tempat Nongkrong di Kota Solo</p>
+            <a href="#section2" class="btn btn-success">Go to Maps</a>
+        </div>
+    </section>
+-->
+    
+    <main role="main">
+      <div class="tempat">
+<!--          <img src="img/20786021_1964885550462647_3189575152413374824_o.0.jpg" alt="">-->
+          <div class="center" id="atas">
+             <div class="opacity:1">
+              <h1>Sistem Informasi Geografis</h1>
+                <p class="lead">SI berikut dapat menampilkan Cafe atau Tempat Nongkrong di Kota Solo</p>
+                <a href="#mapid" class="btn btn-success"><span class="fa fa-globe"></span>&nbsp;Go to Maps</a>
+             </div>
+          </div>
+      </div>
+       <div class="container">
+        <div class="text-center mt-2" id="section2">
+            <br><br><br>
+               <div class="pb-3">
+                <div class="card">
+                    Click on the icons on the map for information about Cafe at Solo City
+                </div>
+               </div>
+        
+            <div id="mapid" style="height: 500px;"></div>
+            <br><br>
+            <!-- Button to Open the Modal -->
+
+            <!-- The Modal -->
+
+        </div>
+       </div>
+        
+        <div class="modal fade" id="myModal">
+            <!-- Modal About -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Welcome to the GIS of Cafe!</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" id="aboutTabs">
+                            <li class="nav-item"><a href="#about" data-toggle="tab" class="nav-link active">&nbsp;About the project</a></li>
+                            <!--                          <li class="nav-item"><a href="#contact" data-toggle="tab" class="nav-link">&nbsp;Contact us</a></li>-->
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="about">
+                                <p>Project untuk melengkapi tugas mata kuliah Sistem Informasi Geografis. Sederhana dan mudah diimplementasikan dengan Bootstrap 4, Leaflet, dan CartoDB sebagai Basemap web ini. Dengan menggabungkan pengetahuan Tugas 1 hingga Tugas 9 maka dikembangkanlah project ini</p>
+                                <div class="card">
+                                    <div class="card-header bg-success">Kelompok GIS Kelas C</div>
+                                    <div class="card-body">
+                                        <ul class="list-group">
+                                           <li class="list-group-item">Fahrur Rizky Dewantara |&nbsp;<b>L200160150</b></li>
+                                            <li class="list-group-item">Riyan Adi Nugroho |&nbsp;<b>L200160170</b></li>
+                                            <li class="list-group-item">Putera Islamiyadi R |&nbsp;<b>L200160172</b></li>
+                                            <li class="list-group-item">Widhar Dwiatmoko |&nbsp;<b>L200160179</b></li>
+                                            <li class="list-group-item">Muhammad Mu'tashim Billah |&nbsp;<b>L200160183</b></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="featureModal">
+            <!-- Modal About -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="feature-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" id="feature-info">
+                        <!--
+                     <img src="img/JTP_7102.0.jpg" class="img_toko" alt="">
+                      <table class="table table-striped table-hover">
+                          <tr>
+                              <th>Name</th>
+                              <td>Kopisolo</td>
+                          </tr>
+                          <tr>
+                              <th>Phone</th>
+                              <td>085729817982</td>
+                          </tr>
+                          <tr>
+                              <th>Alamat</th>
+                              <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, repudiandae odio illo aliquid id ullam asperiores cum voluptatem ea officiis reiciendis, sapiente beatae a distinctio quos excepturi ipsam repellendus voluptatibus inventore at, facere labore laboriosam. Ea alias aut aspernatur, ab eum dolore suscipit ratione. Qui voluptatum autem animi, eaque adipisci.</td>
+                          </tr>
+                      </table>
+-->
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main><!-- /.container -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="leaflet/leaflet.js"></script>
+    <script src="leaflet/leaflet.ajax.min.js"></script>
+    <script src="leaflet-search/leaflet-search.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/map.js"></script>
+
+</body>
+
+</html>
